@@ -4,7 +4,7 @@
   "description": "A minimal Electron application",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron . --enable-logging --v=1 --enable-gpu-rasterization --disable-features=MojoVideoDecoder --disable-gpu-sandbox"
   },
   "repository": "https://github.com/electron/electron-quick-start",
   "keywords": [
@@ -17,6 +17,6 @@
   "author": "GitHub",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "^6.0.7"
+    "electron": "6.0.7"
   }
 }

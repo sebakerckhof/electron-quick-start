@@ -1,0 +1,24 @@
+
+> electron-quick-start@1.0.0 start /home/barco/edu/electron-quick-start
+> electron . --enable-logging --v=1 
+
+{
+  '2d_canvas': 'disabled_software',
+  flash_3d: 'disabled_software',
+  flash_stage3d: 'disabled_software',
+  flash_stage3d_baseline: 'disabled_software',
+  gpu_compositing: 'disabled_software',
+  metal: 'disabled_off',
+  multiple_raster_threads: 'enabled_on',
+  oop_rasterization: 'disabled_off',
+  protected_video_decode: 'disabled_off',
+  rasterization: 'disabled_software',
+  skia_renderer: 'disabled_off',
+  surface_control: 'disabled_off',
+  surface_synchronization: 'enabled_on',
+  video_decode: 'disabled_software',
+  viz_display_compositor: 'enabled_on',
+  viz_hit_test_surface_layer: 'disabled_off',
+  webgl: 'disabled_off',
+  webgl2: 'disabled_off'
+}

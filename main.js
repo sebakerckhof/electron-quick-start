@@ -4,23 +4,81 @@ const path = require('path')
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
-let mainWindow
+let mainWindow;
+let ytWindow;
+let gpuWindow;
+let mediaWindow;
+// app.disableHardwareAcceleration();
+app.commandLine.appendSwitch('ignore-gpu-blacklist');
+app.commandLine.appendSwitch('enable-accelerated-video');
+app.commandLine.appendSwitch('enable-gpu-rasterization');
+app.commandLine.appendSwitch('ignore-gpu-blacklist');
+app.commandLine.appendSwitch('enable-native-gpu-memory-buffers');
+app.commandLine.appendSwitch('enable-zero-copy');
+app.commandLine.appendSwitch('disable-gpu-driver-workarounds');
 
 function createWindow () {
+  console.log(app.getGPUFeatureStatus());
+
+
   // Create the browser window.
   mainWindow = new BrowserWindow({
+    x: 0,
+    y: 0,
     width: 800,
     height: 600,
     webPreferences: {
-      preload: path.join(__dirname, 'preload.js')
+      preload: path.join(__dirname, 'preload.js'),
+      nodeIntegration: true,
+      webSecurity: false,
+    }
+  })
+
+  ytWindow = new BrowserWindow({
+    width: 800,
+    height: 600,
+    x: 800,
+    y: 0,
+    webPreferences: {
+      preload: path.join(__dirname, 'preload.js'),
+      nodeIntegration: true,
+      webSecurity: false,
+    }
+  })
+
+  gpuWindow = new BrowserWindow({
+    x: 0,
+    y: 600,
+    width: 800,
+    height: 600,
+    webPreferences: {
+      preload: path.join(__dirname, 'preload.js'),
+      nodeIntegration: true,
+      webSecurity: false,
+    }
+  })
+
+  mediaWindow = new BrowserWindow({
+    width: 800,
+    height: 600,
+    x: 800,
+    y: 600,
+    webPreferences: {
+      preload: path.join(__dirname, 'preload.js'),
+      nodeIntegration: true,
+      webSecurity: false,
     }
   })
 
   // and load the index.html of the app.
   mainWindow.loadFile('index.html')
 
+  ytWindow.loadURL('https://www.vimeo.com');
+  gpuWindow.loadURL('chrome://gpu');
+  mediaWindow.loadURL('chrome://media-internals');
+  
   // Open the DevTools.
-  // mainWindow.webContents.openDevTools()
+  mainWindow.webContents.openDevTools()
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {
