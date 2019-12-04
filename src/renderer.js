@@ -3,5 +3,5 @@
 // All of the Node.js APIs are available in this process.
 // Modules to control application life and create native browser window
 const {app} = require('electron').remote;
-console.log(app.getGPUFeatureStatus());
+// console.log(app.getGPUFeatureStatus());
 
